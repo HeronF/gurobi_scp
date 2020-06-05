@@ -67,9 +67,9 @@ for (int i=0;i<Ma.coord[0].size()*Ma.custo_roteador.size();i++){
         }
 
       model.setObjective (expr_objetivo, GRB_MINIMIZE);	
-model.set("heuristics","0");
-model.set("presolve","0");
-model.set("cuts","0");
+model.set("heuristics","1");
+model.set("presolve","1");
+model.set("cuts","1");
  model.optimize ();
 
 //gerar grafico e log
