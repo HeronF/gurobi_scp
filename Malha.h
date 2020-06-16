@@ -8,29 +8,29 @@ class Malha{
 
 public:
 	
-vector<float> coord[2];
-vector<float> Grid[2];
+vector<float> coord[2];  // conjunto indexado de coordenadas
+vector<float> Grid[2];  //conjunto indexado de toda região
 
-vector<float> custo_roteador;
-vector<float> raio;
+vector<float> custo_roteador;  //conjunto indexado de custo dos roteadores
+vector<float> raio;  //conjunto indexado de raios dos roteadores
 
 //vector<vector<vector<bool>>> conjunto_adjacencia;
 
-int NX, NY;
-float XI, XF, YI, YF;
-vector<float> RXI, RXF, RYI , RYF;
+int NX, NY; //numero de cortes na malha(refinamento)
+float XI, XF, YI, YF; //coordenadas da malha
+vector<float> RXI, RXF, RYI , RYF; //triângulos retirados
 
 void set_malha(int NX, int NY, float Xi, float Xf, float Yi, float Yf); //---cria uma região retangular entre x inicial - x final e y inicial - y final
 //void printar_pontos_na_tela();  //------uma função que printa na tela os pontos de uma lista k
 void retirar_retangulo(float Rxi,float Rxf,float Ryi,float Ryf); //-------retira um retangulo entre os pontos Rxi - Rxf, Ryi - Ryf
 //void retirar_N_retangulos(int n);
 //void atualizar_matrizes_de_adjacencia();//-----atualiza lista de pontos que distam do centro com raio R
-void gerar_saida(int x[]);
-bool fora_da_malha(float x,float y);
-void formar_p1_malha(); //
-void Adicionar_roteador(float custo,float raio);
+void gerar_saida(int x[]); //cria saida em log para leitura posterior
+bool fora_da_malha(float x,float y); //indica se um ponto está fora da malha
+void formar_p1_malha(); //desenha o P1 usando o tamanho 0-144 0-152
+void Adicionar_roteador(float custo,float raio); // adiciona um roteador
 int Funcao_de_apoio1(int x[],int j);   //porblema com variavél não estática sendo usada na hora de definir.
-int funcao_alcance(int i, int j, int k);
+int funcao_alcance(int i, int j, int k); //indica se um ponto está ao alcance usando um roteador(esfera)
 };
 
 int Malha::funcao_alcance(int i, int j, int k)
